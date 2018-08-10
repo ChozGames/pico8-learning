@@ -1,16 +1,54 @@
 pico-8 cartridge // http://www.pico-8.com
 version 16
 __lua__
+
+// p pour player
+p = {}
+
+p.spr = 1 // premier sprite
+p.sprn = 2 // nombre de frame
+p.spd = 1 // vitesse animation
+
+
 function _draw()
 	cls()
 	
+	// temps en seconde
 	print(time())
-	print(time()*time()*time()*time())
-	
-	// le module pour 2 donne soit 0 soit 1
-	// on affiche le sprite selon le temps donne
-	spr(1 + (time())%2,60,60)
+ 
+	spr(get_animation(),60,60)
 
+end
+
+
+function get_animation()
+
+	// le premier sprite	
+	local debut = p.spr
+	
+	
+	// exemple
+	
+	// si vitesse = time() * 1
+	// un sprite par seconde
+	
+	// si vitesse = time() * 4
+	// 4 sprites par seconde
+	
+	// on multiple par le nombre 
+	// de sprite que l'on veut par
+	// seconde
+	local vitesse = time() * p.spd
+	
+	
+	// on utilisera le modulo 
+	// pour afficher tous 
+	// les sprites
+	local nb_frame = p.sprn
+	
+	
+	return debut + vitesse % nb_frame
+	
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
