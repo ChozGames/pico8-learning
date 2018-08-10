@@ -23,7 +23,7 @@ end
 
 function get_animation()
 
-	// le premier sprite	
+	// position du premier sprite	
 	local debut = p.spr
 	
 	
@@ -47,7 +47,10 @@ function get_animation()
 	local nb_frame = p.sprn
 	
 	
-	return debut + vitesse % nb_frame
+	// quand le modulo donne un 0
+	// l'animation retourne sur
+	// le premier sprite
+	return debut + (vitesse % nb_frame)
 	
 end
 __gfx__
